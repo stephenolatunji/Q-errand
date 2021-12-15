@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:quick_errand/Config/config.dart';
 
 class FilledButton extends StatelessWidget {
   const FilledButton({Key? key}) : super(key: key);
@@ -8,18 +9,9 @@ class FilledButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width * 0.93,
-      height: 48.0.h,
-      margin: EdgeInsets.only(top: 64.0.h),
+      height: 40.0.h,
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [
-            Color.fromRGBO(115, 44, 164, 1),
-            Color.fromRGBO(140, 98, 169, 1),
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          stops: [0.0, 1.0],
-        ),
+        gradient: Palette.buttonGradient,
         borderRadius: BorderRadius.circular(24),
         color: Colors.deepPurple,
         boxShadow: const [
