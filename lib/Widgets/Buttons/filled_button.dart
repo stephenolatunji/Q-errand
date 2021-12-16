@@ -3,7 +3,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quick_errand/Config/config.dart';
 
 class FilledButton extends StatelessWidget {
-  const FilledButton({Key? key}) : super(key: key);
+  final String text;
+  final Function() onPressed;
+  final bool isActive;
+  const FilledButton({
+    Key? key,
+    required this.text,
+    required this.onPressed,
+    this.isActive = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,13 +21,13 @@ class FilledButton extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: Palette.buttonGradient,
         borderRadius: BorderRadius.circular(24),
-        color: Colors.deepPurple,
         boxShadow: const [
           BoxShadow(
-              color: Color.fromRGBO(0, 0, 0, 0.2),
-              offset: Offset.zero,
-              blurRadius: 2,
-              spreadRadius: 2)
+            color: Color.fromRGBO(0, 0, 0, 0.2),
+            offset: Offset.zero,
+            blurRadius: 2,
+            spreadRadius: 2,
+          )
         ],
       ),
       child: ElevatedButton(
@@ -29,13 +37,13 @@ class FilledButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(24.0),
           ),
         ),
-        child: Text('Continue',
+        child: Text(text,
             style: TextStyle(
               fontSize: 16.0.sp,
               fontWeight: FontWeight.bold,
               color: const Color.fromRGBO(255, 255, 255, 1),
             )),
-        onPressed: () {},
+        onPressed: isActive ? onPressed : null,
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quick_errand/Screens/screens.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'Routing/router.dart' as router;
 
 void main() {
   runApp(const MyApp());
@@ -30,6 +31,8 @@ class MyApp extends StatelessWidget {
         home: const Scaffold(
           body: Login(),
         ),
+        onGenerateRoute: router.generateRoute,
+        initialRoute: router.LoginRoute,
       ),
     );
   }

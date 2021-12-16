@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quick_errand/Config/palette.dart';
+import 'package:quick_errand/Routing/router.dart';
 import 'package:quick_errand/Widgets/widgets.dart';
 import 'package:quick_errand/Config/config.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -17,6 +18,10 @@ class _SignUpState extends State<SignUp> {
   var _textCaseColor = Palette.boldLetter;
   var _textLengthColor = Palette.boldLetter;
   var _textSymbolColor = Palette.boldLetter;
+
+  bool _isEmail = false;
+  bool _isNumberActive = false;
+  bool _isPasswordActive = false;
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -107,7 +112,11 @@ class _SignUpState extends State<SignUp> {
                           ),
                           Container(
                               margin: EdgeInsets.only(top: 64.h),
-                              child: const FilledButton()),
+                              child: FilledButton(
+                                text: 'Continue',
+                                isActive: _isEmail,
+                                onPressed: () {},
+                              )),
                           Container(
                             margin: EdgeInsets.fromLTRB(0, 80.0.h, 0, 32.0),
                             child: Row(
@@ -271,7 +280,11 @@ class _SignUpState extends State<SignUp> {
                           ),
                           Container(
                             margin: EdgeInsets.only(top: 64.h),
-                            child: const FilledButton(),
+                            child: FilledButton(
+                              text: 'Continue',
+                              isActive: _isNumberActive,
+                              onPressed: () {},
+                            ),
                           )
                         ],
                       ),
@@ -405,7 +418,11 @@ class _SignUpState extends State<SignUp> {
                           ),
                           Container(
                             margin: EdgeInsets.only(top: 56.0.h),
-                            child: const FilledButton(),
+                            child: FilledButton(
+                              text: 'Create account',
+                              isActive: _isPasswordActive,
+                              onPressed: () {},
+                            ),
                           ),
                         ],
                       ),
@@ -421,7 +438,9 @@ class _SignUpState extends State<SignUp> {
                     BottomNav(
                       text1: 'Already have an account? ',
                       text: 'Sign in',
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, LoginRoute);
+                      },
                     ),
                   ],
                 ),

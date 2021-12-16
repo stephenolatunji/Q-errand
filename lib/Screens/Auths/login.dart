@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:quick_errand/Routing/routing_constants.dart';
 import 'package:quick_errand/Widgets/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quick_errand/Config/config.dart';
@@ -12,6 +13,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  bool _isActive = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,26 +73,33 @@ class _LoginState extends State<Login> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Container(
-                          height: 24.h,
-                          width: 120.w,
-                          padding: const EdgeInsets.all(4.0),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              border: Border.all(
-                                  width: 1.0, color: Palette.faintText)),
-                          margin: EdgeInsets.fromLTRB(0, 16.h, 0, 24.h),
-                          child: Text(
-                            'Forgot password',
-                            style: TextStyle(
-                                fontSize: 13.0.sp, color: Palette.boldLetter),
+                        InkWell(
+                          onTap: () {},
+                          child: Container(
+                            height: 24.h,
+                            width: 120.w,
+                            padding: const EdgeInsets.all(4.0),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16),
+                                border: Border.all(
+                                    width: 1.0, color: Palette.faintText)),
+                            margin: EdgeInsets.fromLTRB(0, 16.h, 0, 24.h),
+                            child: Text(
+                              'Forgot password',
+                              style: TextStyle(
+                                  fontSize: 13.0.sp, color: Palette.boldLetter),
+                            ),
                           ),
                         ),
                       ],
                     ),
                     Container(
                         margin: EdgeInsets.only(top: 24.h),
-                        child: const FilledButton()),
+                        child: FilledButton(
+                          text: 'Log in',
+                          isActive: _isActive,
+                          onPressed: () {},
+                        )),
                     Container(
                       margin: EdgeInsets.fromLTRB(0, 80.0.h, 0, 32.0),
                       child: Row(
@@ -179,7 +188,9 @@ class _LoginState extends State<Login> {
                   BottomNav(
                     text1: 'Don\'t have an account? ',
                     text: 'Create one',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, SignUpRoute);
+                    },
                   ),
                 ],
               ),
